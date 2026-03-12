@@ -1,0 +1,44 @@
+{
+  "name": "kf-cli",
+  "owner": {
+    "name": "crewnest.ai",
+    "email": "info@crewnest.ai"
+  },
+  "metadata": {
+    "description": "KnowledgeFactory CLI - Native CLI tools, no Docker/MCP required",
+    "version": "0.1.0",
+    "repository": "https://github.com/ZorroCheng-MC/kf-cli",
+    "license": "MIT",
+    "keywords": [
+      "knowledge-management",
+      "obsidian",
+      "capture",
+      "ai-powered",
+      "claude-code",
+      "cli",
+      "native"
+    ]
+  },
+  "plugins": [
+    {
+      "name": "kf-cli",
+      "description": "KnowledgeFactory CLI - Native implementation using CLI tools (yt-dlp, gh, curl) instead of MCP/Docker",
+      "source": "./",
+      "strict": false,
+      "commands": [
+        "./commands/capture.md",
+        "./commands/youtube-note.md",
+        "./commands/idea.md",
+        "./commands/gitingest.md",
+        "./commands/study-guide.md",
+        "./commands/article.md",
+        "./commands/publish.md",
+        "./commands/share.md",
+        "./commands/bulk-auto-tag.md",
+        "./commands/semantic-search.md",
+        "./commands/setup.md"
+      ],
+      "skills": ["./"]
+    }
+  ]
+}
