@@ -5,14 +5,14 @@
 
 ## Overview
 
-Native CLI-based Claude Code plugin for Obsidian knowledge management. Drop-in replacement for kf-claude — same commands, same templates, same output — without Docker or MCP dependencies.
+Native CLI-based Claude Code plugin for Obsidian knowledge management. Full-featured, no Docker or MCP dependencies required.
 
 ## Why kf-cli?
 
-- **No Docker required** — uses yt-dlp, gh CLI, WebFetch, and direct file operations
-- **Faster** — local I/O 100-500x faster than MCP Docker, no cold start penalty
+- **No Docker required** — uses yt-dlp, gh CLI, obsidian-cli, and direct file operations
+- **Faster** — local I/O with no cold start penalty
 - **Simpler** — fewer moving parts, easier to debug
-- **Coexists** with kf-claude — use both simultaneously via namespaced commands
+- **Self-contained** — installs as a standalone plugin, no external services needed
 
 ## Installation
 
@@ -32,7 +32,6 @@ Open your Obsidian vault in Claude Code, then run:
 You should see `kf-cli` in the list. Then run `/kf-cli:setup` to configure.
 
 > **Note**: Installation is done via Claude Code plugin commands — no git clone needed.
-> The zorskill marketplace also provides kf-claude, flight, and future ZorCorp plugins.
 
 ## Prerequisites
 
@@ -67,21 +66,16 @@ kf-cli/
 ├── .claude-plugin/
 │   └── marketplace.json       # Plugin manifest (11 commands)
 ├── commands/                   # Command .md files (prompt definitions)
-├── templates/                  # Symlinked from kf-claude
+├── templates/                  # Note templates
 ├── scripts/
-│   ├── core/                   # Symlinked: publish.sh, fetch-youtube-transcript.sh
+│   ├── core/                   # publish.sh, fetch-youtube-transcript.sh
 │   └── helpers/common.sh       # Utility functions
 ├── SKILL.md                    # CLI-native skill definition
 ├── COMMANDS.md                 # Full command reference
-├── MIGRATION.md                # Migration guide from kf-claude
 ├── TROUBLESHOOTING.md          # Common issues and fixes
 ├── CHANGELOG.md                # Version history
 └── README.md
 ```
-
-## Migration from kf-claude
-
-Both plugins coexist. Use `/kf-cli:command` instead of `/kf-claude:command`. See [MIGRATION.md](MIGRATION.md).
 
 ## License
 
@@ -90,4 +84,3 @@ MIT
 ## Credits
 
 Built by ZorCorp
-Based on kf-claude architecture

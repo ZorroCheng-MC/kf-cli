@@ -69,32 +69,18 @@ echo "ℹ️  No Docker required! kf-cli uses native CLI tools."
 echo ""
 ```
 
-## Step 3: Check Obsidian Plugins
+## Step 3: Check obsidian-cli
 
 ```bash
-echo "🔌 Checking Obsidian plugins..."
+echo "🖥️  Checking obsidian-cli..."
 echo ""
 
-# Local REST API
-REST_API_CONFIG=".obsidian/plugins/obsidian-local-rest-api/data.json"
-if [[ -f "$REST_API_CONFIG" ]]; then
-    API_KEY=$(jq -r '.apiKey // empty' "$REST_API_CONFIG")
-    if [[ -n "$API_KEY" ]]; then
-        echo "✅ Local REST API configured (key: ${API_KEY:0:8}...)"
-    else
-        echo "⚠️  Local REST API plugin found but no API key"
-    fi
+if command -v obsidian-cli >/dev/null 2>&1; then
+    OBS_CLI_VERSION=$(obsidian-cli --version 2>/dev/null || echo "unknown")
+    echo "✅ obsidian-cli ($OBS_CLI_VERSION)"
 else
-    echo "⚠️  Local REST API not configured"
-    echo "   Required for: /kf-cli:semantic-search"
-    echo "   Install from Obsidian Community Plugins"
-fi
-
-# Smart Connections
-if [[ -d ".obsidian/plugins/smart-connections" ]]; then
-    echo "✅ Smart Connections installed"
-else
-    echo "⚠️  Smart Connections not found"
+    echo "❌ obsidian-cli not found"
+    echo "   Install: npm install -g obsidian-cli"
     echo "   Required for: /kf-cli:semantic-search"
 fi
 
@@ -237,10 +223,10 @@ echo "  /kf-cli:publish        - Publish to GitHub Pages"
 echo "  /kf-cli:share          - Generate shareable URL"
 echo "  /kf-cli:semantic-search - Search vault by meaning"
 echo ""
-echo "Advantages over kf-claude (MCP version):"
+echo "Key features:"
 echo "  ✅ No Docker required"
 echo "  ✅ Direct filesystem access (faster)"
-echo "  ✅ Uses native CLI tools (yt-dlp, gh, curl)"
+echo "  ✅ Uses native CLI tools (yt-dlp, gh, curl, obsidian-cli)"
 echo "  ✅ Simpler architecture"
 echo ""
 echo "Configuration Files:"
