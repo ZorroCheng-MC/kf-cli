@@ -19,11 +19,11 @@ Native CLI-based Claude Code plugin for Obsidian knowledge management. Drop-in r
 Open your Obsidian vault in Claude Code, then run:
 
 ```bash
-# Step 1: Add the plugin marketplace
-/plugin marketplace add ZorroCheng-MC/kf-cli
+# Step 1: Add the ZorCorp zorskill marketplace (one-time)
+/plugin marketplace add ZorCorp/zorskill
 
-# Step 2: Install the plugin
-/plugin install kf-cli@ZorroCheng-MC/kf-cli
+# Step 2: Install kf-cli
+/plugin install kf-cli
 
 # Step 3: Verify
 /plugin list
@@ -32,6 +32,7 @@ Open your Obsidian vault in Claude Code, then run:
 You should see `kf-cli` in the list. Then run `/kf-cli:setup` to configure.
 
 > **Note**: Installation is done via Claude Code plugin commands — no git clone needed.
+> The zorskill marketplace also provides kf-claude, flight, and future ZorCorp plugins.
 
 ## Prerequisites
 
