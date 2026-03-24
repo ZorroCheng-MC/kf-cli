@@ -1,37 +1,42 @@
-# kf-cli - KnowledgeFactory Native CLI Plugin
+# kf-cli — KnowledgeFactory CLI
 
-**Version**: 0.1.0
-**Status**: Tested (8/8 commands pass)
+Obsidian knowledge management for Claude Code and multi-agent systems. Capture YouTube videos, articles, ideas, and GitHub repos — all with AI auto-tagging and one-command publishing to GitHub Pages.
 
-## Overview
+No Docker. No MCP. Just CLI tools.
 
-Native CLI-based Claude Code plugin for Obsidian knowledge management. Full-featured, no Docker or MCP dependencies required.
+## Install
 
-## Why kf-cli?
+### Option A — npm via zorskills (recommended)
 
-- **No Docker required** — uses yt-dlp, gh CLI, obsidian-cli, and direct file operations
-- **Faster** — local I/O with no cold start penalty
-- **Simpler** — fewer moving parts, easier to debug
-- **Self-contained** — installs as a standalone plugin, no external services needed
-
-## Installation
-
-Open your Obsidian vault in Claude Code, then run:
+Installs `kf-cli` alongside all ZorCorp skills and symlinks them into every agent on your machine.
 
 ```bash
-# Step 1: Add the ZorCorp zorskill marketplace (one-time)
+npm install -g @zorcorp/zorskills
+```
+
+Available immediately in:
+- **Claude Code** — invoke as `/kf-cli:command`
+- **OpenClaw** — agent picks up on next restart
+
+Update:
+
+```bash
+npm update -g @zorcorp/zorskills
+```
+
+### Option B — Claude Code Plugin Marketplace
+
+For auto-update notifications inside Claude Code:
+
+```
 /plugin marketplace add ZorCorp/zorskill
-
-# Step 2: Install kf-cli
 /plugin install kf-cli
-
-# Step 3: Verify
 /plugin list
 ```
 
-You should see `kf-cli` in the list. Then run `/kf-cli:setup` to configure.
+Then run `/kf-cli:setup` to configure your vault path.
 
-> **Note**: Installation is done via Claude Code plugin commands — no git clone needed.
+---
 
 ## Prerequisites
 
@@ -40,6 +45,8 @@ brew install yt-dlp gh jq uv
 ```
 
 Verify: `yt-dlp --version && gh --version && jq --version && uvx --version`
+
+---
 
 ## Commands
 
@@ -52,35 +59,39 @@ Verify: `yt-dlp --version && gh --version && jq --version && uvx --version`
 | `/kf-cli:study-guide <source>` | Comprehensive study guide from any content |
 | `/kf-cli:article <topic>` | Article with auto-generated Gemini hero image |
 | `/kf-cli:publish <filename>` | Publish to GitHub Pages (sharehub) |
-| `/kf-cli:share <filename>` | Share via URL-encoded link (no server) |
+| `/kf-cli:share <filename>` | Share via URL-encoded link (no server needed) |
 | `/kf-cli:bulk-auto-tag` | Bulk AI tagging for existing notes |
 | `/kf-cli:semantic-search <query>` | Search vault via Obsidian REST API |
 | `/kf-cli:setup` | Setup wizard with dependency checks |
 
 See [COMMANDS.md](COMMANDS.md) for full reference.
 
+---
+
 ## Project Structure
 
 ```
 kf-cli/
 ├── .claude-plugin/
-│   └── marketplace.json       # Plugin manifest (11 commands)
+│   └── marketplace.json       # Plugin manifest
 ├── commands/                   # Command .md files (prompt definitions)
 ├── templates/                  # Note templates
 ├── scripts/
 │   ├── core/                   # publish.sh, fetch-youtube-transcript.sh
 │   └── helpers/common.sh       # Utility functions
-├── SKILL.md                    # CLI-native skill definition
+├── SKILL.md                    # Skill definition (for ~/.agents/skills/ installs)
 ├── COMMANDS.md                 # Full command reference
-├── TROUBLESHOOTING.md          # Common issues and fixes
-├── CHANGELOG.md                # Version history
+├── TROUBLESHOOTING.md
+├── CHANGELOG.md
 └── README.md
 ```
 
-## License
+---
 
-MIT
+## Migrating from kf-claude
 
-## Credits
+`kf-cli` provides the same commands as `kf-claude` without Docker or MCP dependencies. See [MIGRATION.md](MIGRATION.md).
 
-Built by ZorCorp
+---
+
+**ZorCorp** · [github.com/ZorCorp/kf-cli](https://github.com/ZorCorp/kf-cli) · MIT License
